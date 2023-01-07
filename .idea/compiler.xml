@@ -19,6 +19,9 @@
         <module name="Shipping_Service_System_API" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Shipping_service" target="18" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
