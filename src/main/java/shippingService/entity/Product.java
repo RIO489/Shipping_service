@@ -1,4 +1,4 @@
-package shipping_service.entity;
+package shippingService.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
