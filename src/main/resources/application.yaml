@@ -1,4 +1,6 @@
 spring:
+  flyway:
+    enabled: true
   datasource:
     url: jdbc:mysql://localhost:3306/shop
     username: root
