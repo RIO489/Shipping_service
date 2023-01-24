@@ -8,6 +8,9 @@ import shippingService.mapper.MapperProduct;
 import shippingService.repository.ProductRepository;
 import shippingService.service.ProductService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
@@ -21,5 +24,29 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
         return mapperProduct.toDto(product);
     }
+    @Override
+    public ProductDTO read(Long id){
+        return mapperProduct.toDto(productRepository.findById(id).orElseThrow());
+    }
 
+    @Override
+    public ProductDTO update(ProductDTO newProduct, Long id){
+        ProductDTO oldProduct = mapperProduct.toDto(productRepository.findById(id).orElseThrow());
+        Long oldId = id;
+        oldProduct = newProduct;
+        oldProduct.setId(id);
+        productRepository.save(mapperProduct.toEntity(oldProduct));
+        return oldProduct;
+    }
+
+    @Override
+    public ProductDTO delete(Long id){
+        productRepository.delete(productRepository.findById(id).orElseThrow());
+        return mapperProduct.toDto(productRepository.findById(id).orElseThrow());
+    }
+
+    @Override
+    public List<ProductDTO> getAll(){
+        return productRepository.findAll().stream().map(mapperProduct::toDto).collect(Collectors.toList());
+    }
 }

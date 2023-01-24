@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface ProductService  {
     ProductDTO create(ProductDTO productDTO);
-/*
+
     ProductDTO read(Long id);
 
-    ProductDTO update(ProductDTO dto);
+    ProductDTO update(ProductDTO dto, Long id);
 
     ProductDTO delete(Long id);
 
     List<ProductDTO> getAll();
-*/
+
 }
