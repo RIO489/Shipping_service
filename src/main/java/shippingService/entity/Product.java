@@ -20,7 +20,7 @@ import static javax.persistence.EnumType.STRING;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productID;
+    private Long id;
 
     @Column(name = "name")
     private String name;

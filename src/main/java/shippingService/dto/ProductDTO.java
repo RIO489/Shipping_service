@@ -15,7 +15,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDTO {
-    private Long productID;
+    private Long id;
     @NotNull
     private String name;
     @NotNull
