@@ -14,15 +14,15 @@ import javax.validation.constraints.NotNull;
 public class UserDTO {
     private Long id;
     @Email
-    String email;
+    private String email;
     @NotNull
-    String password;
+    private String password;
     @NotNull
-    String firstName;
+    private String firstName;
     @NotNull
-    String lastName;
+    private String lastName;
     @NotNull
-    String userRole;
+    private String userRole;
     @NotNull
     boolean userStatus;
 }

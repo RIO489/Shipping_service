@@ -12,11 +12,14 @@ import shippingService.service.ProductService;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
-
+    @Autowired
+    private MapperProduct mapperProduct = new MapperProduct();
 
     @Override
-    public Product create(Product product){
-        return productRepository.save(product);
+    public ProductDTO create(ProductDTO productDTO){
+        Product product = mapperProduct.toEntity(productDTO);
+        productRepository.save(product);
+        return mapperProduct.toDto(product);
     }
 
 }

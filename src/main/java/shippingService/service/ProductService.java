@@ -6,7 +6,7 @@ import shippingService.entity.Product;
 import java.util.List;
 
 public interface ProductService  {
-    Product create(Product product);
+    ProductDTO create(ProductDTO productDTO);
 /*
     ProductDTO read(Long id);
 

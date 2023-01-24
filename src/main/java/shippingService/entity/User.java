@@ -4,6 +4,7 @@ package shippingService.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import shippingService.enums.UserRole;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -19,15 +20,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Email
-    String email;
+    private String email;
     @Column
-    String password;
+    private String password;
     @Column
-    String firstName;
+    private String firstName;
     @Column
-    String lastName;
-    @Column
-    String userRole;
+    private String lastName;
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
     @Column
     boolean userStatus;
 }
