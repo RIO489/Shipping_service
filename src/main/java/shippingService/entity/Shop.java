@@ -16,4 +16,5 @@ import javax.persistence.Table;
 public class Shop {
     @Id
     private Long id;
+    private String name;
 }
