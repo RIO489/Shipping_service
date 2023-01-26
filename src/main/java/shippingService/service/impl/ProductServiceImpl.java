@@ -8,10 +8,12 @@ import shippingService.mapper.MapperProduct;
 import shippingService.repository.ProductRepository;
 import shippingService.service.ProductService;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
@@ -40,9 +42,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDTO delete(Long id){
+    public void delete(Long id){
         productRepository.delete(productRepository.findById(id).orElseThrow());
-        return mapperProduct.toDto(productRepository.findById(id).orElseThrow());
     }
 
     @Override

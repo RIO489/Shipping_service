@@ -29,6 +29,5 @@ public class Product {
     private String description;
 
     @Column(name = "price")
-    @NotNull
     private BigDecimal price;
 }

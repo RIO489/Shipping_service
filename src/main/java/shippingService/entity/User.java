@@ -19,16 +19,23 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Email
     private String email;
-    @Column
+
+    @Column(name = "password")
     private String password;
-    @Column
+
+    @Column(name = "firstname")
     private String firstName;
-    @Column
+
+    @Column(name = "lastName")
     private String lastName;
+
     @Enumerated(EnumType.STRING)
+    @Column(name = "userRole")
     private UserRole userRole;
-    @Column
+
+    @Column(name = "isActive")
     boolean userStatus;
 }

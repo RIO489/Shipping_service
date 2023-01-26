@@ -3,6 +3,7 @@ package shippingService.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import shippingService.enums.UserRole;
 
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
@@ -22,7 +23,7 @@ public class UserDTO {
     @NotNull
     private String lastName;
     @NotNull
-    private String userRole;
+    private UserRole userRole;
     @NotNull
     boolean userStatus;
 }

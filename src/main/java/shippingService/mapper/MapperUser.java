@@ -6,7 +6,7 @@ import shippingService.entity.User;
 
 @Component
 public class MapperUser {
-    /*public UserDTO toDto(final User user) {
+    public UserDTO toDto(final User user) {
         final UserDTO dto = new UserDTO();
         dto.setId(user.getId());
         dto.setEmail(user.getEmail());
@@ -28,5 +28,5 @@ public class MapperUser {
         user.setUserRole(dto.getUserRole());
         user.setUserStatus(dto.isUserStatus());
         return user;
-    }*/
+    }
 }
