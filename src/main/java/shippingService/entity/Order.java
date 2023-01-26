@@ -3,9 +3,9 @@ package shippingService.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import shippingService.enums.OrderStatus;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data
@@ -15,12 +15,17 @@ import java.math.BigDecimal;
 @Table(name = "order")
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long courierId;
-    private Long customerId;
-    private String orderStatus;
-    private Long shopId;
+    @ManyToOne
+    @JoinColumn("couier_id")
+    private User courier;
+    @ManyToOne
+    @JoinColumn("customer_id")
+    private User customer;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+    private Shop shop;
     private String address;
     private BigDecimal price;
 }
-

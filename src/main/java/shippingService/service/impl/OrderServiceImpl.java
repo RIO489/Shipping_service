@@ -15,13 +15,12 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     final MapperOrder mapperOrder = new MapperOrder();
     @Autowired
-    final OrderRepository orderRepository = new OrderRepository();
+    final private OrderRepository orderRepository;
+
     @Override
     public OrderDTO create(OrderDTO dto) {
-        orderRepository.add(dto);
-        final Order accountInRepos = orderRepository.getOrders().get(orderRepository.getOrders().size() - 1);
-        orderRepository.toSQL();
-        return mapperOrder.toDto(accountInRepos);
+        orderRepository.save(dto);
+        return
     }
 
     @Override
