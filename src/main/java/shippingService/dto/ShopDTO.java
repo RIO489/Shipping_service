@@ -1,28 +1,26 @@
-package shippingService.entity;
+package shippingService.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "shop")
-public class Shop {
+public class ShopDTO {
     @Id
-    @NonNull
+    @NotNull
     private long id;
     private String shopName;
     private String address;
+    @Id
     private long shopOwnerID;
     private LocalDateTime timeOpen;
     private LocalDateTime timeClose;
+    @Id
     private long holidayID;
 }
