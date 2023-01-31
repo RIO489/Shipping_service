@@ -20,32 +20,33 @@ public class ProductResource {
 
     @PostMapping("/create")
     public String create(
-            @Valid @RequestBody final ProductDTO productDTO){
+            @Valid @RequestBody final ProductDTO productDTO) {
         productService.create(productDTO);
         return "all good";
     }
+
     @GetMapping("/{id}")
-    public ProductDTO read(final @PathVariable Long id){
+    public ProductDTO read(final @PathVariable Long id) {
         return productService.read(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductDTO> update(final @PathVariable("id") Long id,@RequestBody ProductDTO productDTO){
+    public ResponseEntity<ProductDTO> update(final @PathVariable("id") Long id, @RequestBody ProductDTO productDTO) {
         productService.update(productDTO, id);
         return ResponseEntity.ok(productDTO);
 
     }
 
     @DeleteMapping("/{id}")
-    public String delete(final @PathVariable("id") Long id){
+    public String delete(final @PathVariable("id") Long id) {
         ProductDTO productDTO = productService.read(id);
         productService.delete(id);
-        return "Product:"+productDTO.toString();
+        return "Product:" + productDTO.toString();
 
     }
 
     @GetMapping(value = "/all")
-    public List<ProductDTO> getAll(){
+    public List<ProductDTO> getAll() {
         return productService.getAll();
     }
 

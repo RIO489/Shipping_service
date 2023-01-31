@@ -10,6 +10,8 @@ import shippingService.service.ProductService;
 import shippingService.service.UserService;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -21,12 +23,34 @@ public class UserServiceImpl implements UserService {
     private MapperUser mapperUser = new MapperUser();
 
     @Override
-    public UserDTO create(UserDTO dto){
+    public UserDTO create(UserDTO dto) {
         User user = mapperUser.toEntity(dto);
         userRepository.save(user);
         return mapperUser.toDto(user);
     }
 
+    @Override
+    public UserDTO read(Long id) {
+        return mapperUser.toDto(userRepository.findById(id).orElseThrow());
+    }
 
+    @Override
+    public UserDTO update(UserDTO newUser, Long id) {
+        UserDTO oldUser = mapperUser.toDto(userRepository.findById(id).orElseThrow());
+        Long oldId = id;
+        oldUser = newUser;
+        oldUser.setId(id);
+        userRepository.save(mapperUser.toEntity(oldUser));
+        return oldUser;
+    }
 
+    @Override
+    public void delete(Long id) {
+        userRepository.delete(userRepository.findById(id).orElseThrow());
+    }
+
+    @Override
+    public List<UserDTO> getAll() {
+        return userRepository.findAll().stream().map(mapperUser::toDto).collect(Collectors.toList());
+    }
 }
