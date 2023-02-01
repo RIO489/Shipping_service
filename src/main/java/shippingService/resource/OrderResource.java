@@ -11,20 +11,19 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping({"api/order"})
+@RequestMapping("api/order")
 public class OrderResource {
-
-    private final OrderService orderService = new OrderServiceImpl();
+    @Autowired
+    private OrderService orderService;
 
     @PostMapping
-    public OrderDTO create(final  @RequestBody OrderDTO orderDTO) {
-        orderService.create(orderDTO);
-        return orderDTO;
+    public OrderDTO create(final @RequestBody OrderDTO orderDTO) {
+        return orderService.create(orderDTO);
     }
+
     @PutMapping
-    public ResponseEntity<OrderDTO> put(final  @RequestBody OrderDTO orderDTO) {
-        orderService.update(orderDTO);
-        return ResponseEntity.ok(orderDTO);
+    public OrderDTO put(final @RequestBody OrderDTO orderDTO) {
+        return orderService.update(orderDTO);
     }
 
     @GetMapping("/{id}")
@@ -33,17 +32,12 @@ public class OrderResource {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<OrderDTO> delete(final @PathVariable Long id) {
-        final OrderDTO orderDTO = get(id);
+    public void delete(final @PathVariable Long id) {
         orderService.delete(id);
-        return ResponseEntity.ok(orderDTO);
     }
 
     @GetMapping(value = "/all")
     public List<OrderDTO> getAll() {
         return orderService.getAll();
     }
-
-
-
 }

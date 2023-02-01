@@ -10,11 +10,11 @@ public class MapperOrder {
         final OrderDTO dto = new OrderDTO();
         dto.setId(order.getId());
         dto.setAddress(order.getAddress());
-        dto.setCustomerId(order.getCustomer());
+        dto.setCustomer(order.getCustomer());
         dto.setOrderStatus(order.getOrderStatus());
         dto.setPrice(order.getPrice());
-        dto.setCourierId(order.getCourier());
-        dto.setShopId(order.getShopId());
+        dto.setCourier(order.getCourier());
+        dto.setShop(order.getShop());
         return dto;
     }
 }

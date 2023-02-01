@@ -25,6 +25,8 @@ public class Order {
     private User customer;
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+    @OneToOne
+    @JoinColumn("shop_id")
     private Shop shop;
     private String address;
     private BigDecimal price;

@@ -8,25 +8,18 @@ import org.springframework.stereotype.Repository;
 import shippingService.dto.OrderDTO;
 import shippingService.entity.Order;
 
-import javax.annotation.PreDestroy;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Long, Order> {
-    List<Order> orders = new ArrayList<>();
-    @Query(value = "SELECT u FROM Order u WHERE u.courier_id= :courier_id")
-    List<Order> findAllByCourierId(Long courier_id);
+public interface OrderRepository extends JpaRepository<Order,Long> {
+    @Query(value = "SELECT o FROM Order o WHERE o.courier_id= :courierId")
+    List<Order> findAllByCourierId(Long courierId);
 
-    @Query(value = "SELECT u FROM Order u WHERE u.id= :id")
+    @Query(value = "SELECT o FROM Order o WHERE o.id= :id")
     List<Order> findAllById(Long id);
 
+//    @Query(value = "SELECT o FROM Order")
+//    List<Order> findAll();
     /*public Order findByCustomerId(final Long customerId) {
         return orders
                 .stream()
