@@ -29,13 +29,13 @@ public class User {
     @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "userRole")
+    @Column(name = "user_role")
     private UserRole userRole;
 
-    @Column(name = "isActive")
+    @Column(name = "is_active")
     boolean userStatus;
 }

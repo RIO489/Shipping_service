@@ -18,6 +18,7 @@ import java.util.List;
 public class UserResource {
     @Autowired
     private UserService userService = new UserServiceImpl();
+    @Autowired UserRepository userRepository;
 
     @PostMapping("/create")
     public String create(@Valid @RequestBody final UserDTO userDTO) {
@@ -31,8 +32,7 @@ public class UserResource {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> update(final @PathVariable("id") Long id,
-                                          @RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> update(final @PathVariable("id") Long id, @RequestBody UserDTO userDTO) {
         userService.update(userDTO, id);
         return ResponseEntity.ok(userDTO);
     }

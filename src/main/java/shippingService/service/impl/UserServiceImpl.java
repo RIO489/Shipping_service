@@ -35,13 +35,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO update(UserDTO newUser, Long id) {
-        UserDTO oldUser = mapperUser.toDto(userRepository.findById(id).orElseThrow());
-        Long oldId = id;
-        oldUser = newUser;
-        oldUser.setId(id);
-        userRepository.save(mapperUser.toEntity(oldUser));
-        return oldUser;
+    public void update(UserDTO newUser, Long id) {
+        User user = userRepository.findById(id).get();
+        user.setId(id);
+        user.setEmail(newUser.getEmail());
+        user.setPassword(newUser.getPassword());
+        user.setFirstName(newUser.getFirstName());
+        user.setLastName(newUser.getLastName());
+        user.setUserRole(newUser.getUserRole());
+        user.setUserStatus(newUser.isUserStatus());
+        userRepository.save(user);
     }
 
     @Override

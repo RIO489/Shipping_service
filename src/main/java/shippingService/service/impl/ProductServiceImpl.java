@@ -33,13 +33,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDTO update(ProductDTO newProduct, Long id) {
-        ProductDTO oldProduct = mapperProduct.toDto(productRepository.findById(id).orElseThrow());
-        Long oldId = id;
-        oldProduct = newProduct;
-        oldProduct.setId(id);
-        productRepository.save(mapperProduct.toEntity(oldProduct));
-        return oldProduct;
+    public void update(ProductDTO newProduct, Long id) {
+        Product product = productRepository.findById(id).get();
+        product.setId(id);
+        product.setName(newProduct.getName());
+        product.setPrice(newProduct.getPrice());
+        product.setDescription(newProduct.getDescription());
+        productRepository.save(product);
+
     }
 
     @Override
