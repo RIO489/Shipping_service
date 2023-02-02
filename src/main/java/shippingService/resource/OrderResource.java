@@ -28,7 +28,7 @@ public class OrderResource {
 
     @GetMapping("/{id}")
     public OrderDTO get(final @PathVariable Long id) {
-        return orderService.read(id);
+        return orderService.findOneById(id);
     }
 
     @DeleteMapping("/{id}")

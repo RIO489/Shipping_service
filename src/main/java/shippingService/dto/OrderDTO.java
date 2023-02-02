@@ -19,13 +19,13 @@ import java.math.BigDecimal;
     public class OrderDTO {
         private Long id;
         @NotNull
-        private User courier;//ID
+        private UserDTO courier;//ID
         @NotNull
-        private User customer;
+        private UserDTO customer;
         @NotNull
         private OrderStatus orderStatus;
         @NotNull
-        private Shop shop;
+        private ShopDTO shop;
         @NotNull
         private String address;
         @NotNull

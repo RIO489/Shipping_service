@@ -1,11 +1,8 @@
 package shippingService.repository;
 
-import org.hibernate.service.spi.ServiceException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import shippingService.dto.OrderDTO;
 import shippingService.entity.Order;
 
 import java.util.List;
@@ -16,7 +13,7 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     List<Order> findAllByCourierId(Long courierId);
 
     @Query(value = "SELECT o FROM Order o WHERE o.id= :id")
-    List<Order> findAllById(Long id);
+    Order findAllById(Long id);
 
 //    @Query(value = "SELECT o FROM Order")
 //    List<Order> findAll();

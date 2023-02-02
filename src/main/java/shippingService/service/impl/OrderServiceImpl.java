@@ -1,9 +1,11 @@
 package shippingService.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shippingService.dto.OrderDTO;
 import shippingService.entity.Order;
+import shippingService.enums.OrderStatus;
 import shippingService.mapper.MapperOrder;
 import shippingService.repository.OrderRepository;
 import shippingService.service.OrderService;
@@ -14,6 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@Slf4j
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
@@ -23,8 +26,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO create(OrderDTO dto) {
+        log.info("User for create: {}",dto);
         Order order = new Order();
-        order.setOrderStatus(dto.getOrderStatus());
+        order.setOrderStatus(OrderStatus.READY);
 
         User courier = userRepository.findOneById(dto.getCourierId()).orElseThrow(() -> new Exception());
         Shop shop = shopRepository.findById(dto.getShopId()).orElseThrow(()->new Exception());
@@ -37,21 +41,25 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.save(order);
         userRepository.save(courier);
         shopRepository.save(shop);
-
+        log.info("User created: {}",order);
         return mapperOrder.toDto(order);
     }
 
     @Override
-    public OrderDTO read(Long id) {
+    public OrderDTO findOneById(Long id) {
         return mapperOrder.toDto(orderRepository.findById(id).stream().findFirst().orElseThrow());
     }
 
     @Override
     public OrderDTO update(OrderDTO dto) {///repair
-         orderRepository.save(mapperOrder.toEntity(dto));
-         Order newOrder = orderRepository.findById(dto.getId()).stream().findFirst().orElseThrow();
+         Order oldOrder = orderRepository.findById(dto.getId()).stream().findFirst().orElseThrow();
+        oldOrder.setAddress(dto.getAddress());
+        oldOrder.setOrderStatus(dto.getOrderStatus());
+        oldOrder.setPrice(dto.getPrice());
+        oldOrder.
 
-         return mapperOrder.toDto(orderRepository.findById(dto.getId()).stream().findFirst().orElseThrow());
+        orderRepository.save(oldOrder);
+         return mapperOrder.toDto(oldOrder);
     }
 
     @Override
