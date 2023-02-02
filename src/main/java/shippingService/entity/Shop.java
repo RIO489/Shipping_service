@@ -7,8 +7,10 @@ import lombok.NonNull;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,13 +18,13 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "shop")
 public class Shop {
-    @Id
-    @NonNull
-    private long id;
+    private Long id;
     private String shopName;
     private String address;
+//    @OneToOne
+//    private User shopOwner;
     private long shopOwnerID;
     private LocalDateTime timeOpen;
     private LocalDateTime timeClose;
-    private long holidayID;
+    private List<Holiday> holidays;
 }

@@ -3,24 +3,24 @@ package shippingService.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import shippingService.entity.Holiday;
 
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShopDTO {
-    @Id
-    @NotNull
-    private long id;
+    private Long id;
     private String shopName;
     private String address;
-    @Id
-    private long shopOwnerID;
     private LocalDateTime timeOpen;
     private LocalDateTime timeClose;
-    @Id
-    private long holidayID;
+    private List<Holiday> holidays;
+
+    private Long shopOwnerID;
+    //    private User shopOwner;
 }

@@ -27,9 +27,8 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public boolean delete(long id) {
+    public void delete(long id) {
         shopRepository.deleteById(id);
-        return true;
     }
 
     @Override
@@ -37,7 +36,7 @@ public class ShopServiceImpl implements ShopService {
 //        Shop shop = shopRepository.findById(shopDTO.getId()).get();
         delete(shopDTO.getId());
         create(shopDTO);
-        return MapperShop.ToDTO(findById(shopDTO.getId()));
+        return findById(shopDTO.getId());
     }
 
     @Override
@@ -48,13 +47,13 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public Shop findById(long id) {
+    public ShopDTO findById(long id) {
 //        if(!shopRepository.findById(id).isPresent()){
 //            throw new IrregularData("Shop with Id "+id+" not found.");
 //        }
 //        return shopRepository.findById(id).get();
         try {
-            return shopRepository.findById(id).get();
+            return MapperShop.ToDTO(shopRepository.findById(id).get());
         }catch (NoSuchElementException ex){
             return null;
         }
