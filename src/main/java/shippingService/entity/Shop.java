@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
 @Entity
 @Table(name = "shop")
 public class Shop {
+    @Id
     private Long id;
     private String shopName;
     private String address;

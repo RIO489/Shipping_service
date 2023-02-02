@@ -20,7 +20,7 @@ public class ShopResource {
     }
 
     @PutMapping
-    public ShopDTO put(final @RequestBody ShopDTO shopDTO) {
+    public ShopDTO put(final @RequestBody @Validated ShopDTO shopDTO) {
         return shopService.update(shopDTO);
     }
 
