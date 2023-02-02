@@ -33,14 +33,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(ProductDTO newProduct, Long id) {
-        Product product = productRepository.findById(id).get();
-        product.setId(id);
-        product.setName(newProduct.getName());
-        product.setPrice(newProduct.getPrice());
-        product.setDescription(newProduct.getDescription());
-        productRepository.save(product);
-
+    public void update(ProductDTO dto) {
+        productRepository.save(mapperProduct.toEntity(dto));
     }
 
     @Override

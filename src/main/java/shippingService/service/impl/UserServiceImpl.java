@@ -35,15 +35,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(UserDTO newUser, Long id) {
-        User user = userRepository.findById(id).get();
-        user.setId(id);
-        user.setEmail(newUser.getEmail());
-        user.setPassword(newUser.getPassword());
-        user.setFirstName(newUser.getFirstName());
-        user.setLastName(newUser.getLastName());
-        user.setUserRole(newUser.getUserRole());
-        user.setUserStatus(newUser.isUserStatus());
+    public void update(UserDTO dto) {
+        User user = mapperUser.toEntity(dto);
         userRepository.save(user);
     }
 

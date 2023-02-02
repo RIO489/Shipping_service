@@ -30,9 +30,9 @@ public class ProductResource {
         return productService.read(id);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductDTO> update(final @PathVariable("id") Long id, @RequestBody ProductDTO productDTO) {
-        productService.update(productDTO, id);
+    @PutMapping("/update")
+    public ResponseEntity<ProductDTO> update(@RequestBody ProductDTO productDTO) {
+        productService.update(productDTO);
         return ResponseEntity.ok(productDTO);
 
     }
@@ -42,7 +42,6 @@ public class ProductResource {
         ProductDTO productDTO = productService.read(id);
         productService.delete(id);
         return "Product:" + productDTO.toString();
-
     }
 
     @GetMapping(value = "/all")

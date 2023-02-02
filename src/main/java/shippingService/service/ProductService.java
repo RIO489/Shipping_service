@@ -10,7 +10,7 @@ public interface ProductService {
 
     ProductDTO read(Long id);
 
-    void update(ProductDTO dto, Long id);
+    void update(ProductDTO dto);
 
     void delete(Long id);
 

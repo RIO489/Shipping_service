@@ -10,7 +10,7 @@ public interface UserService {
 
     UserDTO read(Long id);
 
-    void update(UserDTO dto, Long id);
+    void update(UserDTO dto);
 
     void delete(Long id);
 
