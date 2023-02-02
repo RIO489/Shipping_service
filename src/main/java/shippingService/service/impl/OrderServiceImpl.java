@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO create(OrderDTO dto) {
-        log.info("User for create: {}",dto);
+        log.info("User for create: {}",dto);//USER!!!!!
         Order order = new Order();
         order.setOrderStatus(OrderStatus.READY);
 
@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.save(order);
         userRepository.save(courier);
         shopRepository.save(shop);
-        log.info("User created: {}",order);
+        log.info("User created: {}",order);//User!!!
         return mapperOrder.toDto(order);
     }
 
