@@ -3,6 +3,7 @@ package shippingService.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import shippingService.dto.ShopDTO;
 import shippingService.entity.Shop;
 import shippingService.exception.IrregularData;
@@ -16,6 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class ShopServiceImpl implements ShopService {
     @Autowired
     private ShopRepository shopRepository;
