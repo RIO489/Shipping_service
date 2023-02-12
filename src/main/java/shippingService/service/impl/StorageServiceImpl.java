@@ -1,6 +1,8 @@
 package shippingService.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import shippingService.dto.StorageDTO;
 import shippingService.entity.Product;
@@ -9,8 +11,12 @@ import shippingService.mapper.StorageMapper;
 import shippingService.repository.StorageRepository;
 import shippingService.service.StorageService;
 
+import javax.transaction.Transactional;
 import java.math.BigInteger;
 
+@Service
+@Transactional
+@Slf4j
 public class StorageServiceImpl implements StorageService {
     @Autowired
     private StorageMapper storageMapper;
