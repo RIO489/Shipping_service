@@ -6,7 +6,6 @@ import shippingService.dto.UserDTO;
 import shippingService.entity.User;
 import shippingService.mapper.MapperUser;
 import shippingService.repository.UserRepository;
-import shippingService.service.ProductService;
 import shippingService.service.UserService;
 
 import javax.transaction.Transactional;
