@@ -28,7 +28,7 @@ public class MapperShop {
 
         shopDTO.setId(shop.getId());
         shopDTO.setShopName(shop.getShopName());
-        shopDTO.setShopOwnerID(shop.getShopOwnerID());
+        shopDTO.setShopOwner(shop.getShopOwner());
         shopDTO.setAddress(shop.getAddress());
         shopDTO.setHolidays(shop.getHolidays());
         shopDTO.setTimeOpen(shop.getTimeOpen());
@@ -43,7 +43,7 @@ public class MapperShop {
         shop.setId(shopDTO.getId());
         shop.setShopName(shopDTO.getShopName());
         shop.setAddress(shopDTO.getAddress());
-        shop.setShopOwnerID(shopDTO.getShopOwnerID());
+        shop.setShopOwner(shopDTO.getShopOwner());
         shopDTO.setHolidays(shop.getHolidays());
         shop.setTimeClose(shopDTO.getTimeClose());
         shop.setTimeOpen(shopDTO.getTimeOpen());

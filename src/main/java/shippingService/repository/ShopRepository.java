@@ -11,10 +11,5 @@ import java.util.List;
 
 @Repository
 public interface ShopRepository extends JpaRepository<Shop, Long> {
-    List<Shop> shops = new ArrayList<>();
-
-//    @Query(value = "SELECT sh FROM shop sh WHERE sh.id= :shopId")
-//    public ShopDTO findById(long shopId);
-
 
 }

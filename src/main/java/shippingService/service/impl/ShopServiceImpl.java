@@ -17,7 +17,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class ShopServiceImpl implements ShopService {
     @Autowired
     private ShopRepository shopRepository;
@@ -34,6 +33,7 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
+    @Transactional
     public ShopDTO update(ShopDTO shopDTO) {
 //        Shop shop = shopRepository.findById(shopDTO.getId()).get();
         delete(shopDTO.getId());

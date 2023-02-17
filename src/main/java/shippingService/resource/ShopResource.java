@@ -14,12 +14,12 @@ public class ShopResource {
     @Autowired
     private ShopService shopService;
 
-    @PostMapping
+    @PostMapping("/create")
     private ShopDTO create(final @RequestBody @Validated ShopDTO shopDTO){
         return shopService.create(shopDTO);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ShopDTO put(final @RequestBody @Validated ShopDTO shopDTO) {
         return shopService.update(shopDTO);
     }

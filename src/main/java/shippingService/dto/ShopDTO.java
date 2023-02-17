@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import shippingService.entity.Holiday;
+import shippingService.entity.User;
 
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
@@ -20,7 +21,5 @@ public class ShopDTO {
     private LocalDateTime timeOpen;
     private LocalDateTime timeClose;
     private List<Holiday> holidays;
-
-    private Long shopOwnerID;
-    //    private User shopOwner;
+    private User shopOwner;
 }
