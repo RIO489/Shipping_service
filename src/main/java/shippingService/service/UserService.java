@@ -1,5 +1,6 @@
 package shippingService.service;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import shippingService.dto.UserDTO;
 
 import java.util.List;

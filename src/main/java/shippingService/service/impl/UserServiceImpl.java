@@ -1,6 +1,9 @@
 package shippingService.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import shippingService.dto.UserDTO;
 import shippingService.entity.User;
@@ -9,7 +12,10 @@ import shippingService.repository.UserRepository;
 import shippingService.service.UserService;
 
 import javax.transaction.Transactional;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 

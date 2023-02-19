@@ -38,4 +38,5 @@ public class User {
 
     @Column(name = "is_active")
     boolean userStatus;
+
 }
