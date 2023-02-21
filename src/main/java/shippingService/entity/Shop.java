@@ -30,7 +30,7 @@ public class Shop {
     private String address;
 
     @OneToOne
-    private UserDTO shopOwner;
+    private User shopOwner;
 
 
 //    @DateTimeFormat(style = "hh:mm")
