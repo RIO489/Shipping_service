@@ -19,15 +19,17 @@ public class HolidayServiceImpl implements HolidayService {
     HolidayRepository holidayRepository;
 
     @Override
-    public void create(HolidayDTO holidayDTO) {
+    public HolidayDTO create(HolidayDTO holidayDTO) {
         holidayRepository.save(MapperHoliday.ToEntity(holidayDTO));
+        return holidayDTO;
     }
 
     @Override
     @Transactional
-    public void update(HolidayDTO holidayDTO) {
+    public HolidayDTO update(HolidayDTO holidayDTO) {
         delete(holidayDTO.getId());
         create(holidayDTO);
+        return holidayDTO;
     }
 
     @Override

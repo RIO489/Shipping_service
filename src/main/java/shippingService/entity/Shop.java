@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.springframework.format.annotation.DateTimeFormat;
+import shippingService.dto.UserDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -29,7 +30,7 @@ public class Shop {
     private String address;
 
     @OneToOne
-    private User shopOwner;
+    private UserDTO shopOwner;
 
 
 //    @DateTimeFormat(style = "hh:mm")

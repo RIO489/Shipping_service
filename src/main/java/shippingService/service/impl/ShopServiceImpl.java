@@ -36,13 +36,7 @@ public class ShopServiceImpl implements ShopService {
     @Override
     @Transactional
     public ShopDTO update(ShopDTO shopDTO) {
-//        Shop shop = shopRepository.findById(shopDTO.getId()).get();
-        delete(shopDTO.getId());
-        create(shopDTO);
-
         shopRepository.save(MapperShop.ToEntity(shopDTO));
-        //save
-        //todo
         return findById(shopDTO.getId());
     }
 

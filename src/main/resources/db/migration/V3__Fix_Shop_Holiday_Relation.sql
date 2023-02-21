@@ -1,5 +1,5 @@
 USE shop_1;
-alter table holiday ADD COLUMN shop_id BIGINT NOT NULL;
+alter table holiday ADD COLUMN shop_id BIGINT;
 
 alter table holiday ADD CONSTRAINT FK_holiday_shop
 FOREIGN key (shop_id) references shop(id) on delete cascade;

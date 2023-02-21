@@ -6,9 +6,9 @@ import shippingService.repository.HolidayRepository;
 import java.util.List;
 
 public interface HolidayService {
-    void create(HolidayDTO holidayDTO);
+    HolidayDTO create(HolidayDTO holidayDTO);
 
-    void update(HolidayDTO holidayDTO);
+    HolidayDTO update(HolidayDTO holidayDTO);
 
     void delete(Long id);
 
