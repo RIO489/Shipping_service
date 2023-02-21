@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shippingService.dto.OrderDTO;
 import shippingService.entity.Order;
+import shippingService.entity.User;
 import shippingService.enums.OrderStatus;
 import shippingService.mapper.MapperOrder;
 import shippingService.repository.OrderRepository;
+import shippingService.repository.UserRepository;
 import shippingService.service.OrderService;
 
 import javax.transaction.Transactional;
@@ -23,6 +25,8 @@ public class OrderServiceImpl implements OrderService {
     private MapperOrder mapperOrder;
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public OrderDTO create(OrderDTO dto) {
@@ -30,8 +34,8 @@ public class OrderServiceImpl implements OrderService {
         Order order = new Order();
         order.setOrderStatus(OrderStatus.READY);
 
-        User courier = userRepository.findOneById(dto.getCourierId()).orElseThrow(() -> new Exception());
-        Shop shop = shopRepository.findById(dto.getShopId()).orElseThrow(()->new Exception());
+        User courier = userRepository.findById(dto.getCourier()).orElseThrow(() -> new Exception());
+        Shop shop = shopRepository.findById(dto.getShop()).orElseThrow(()->new Exception());
 
         order.setCourier(courier);
         order.setShop(shop);
@@ -56,7 +60,7 @@ public class OrderServiceImpl implements OrderService {
         oldOrder.setAddress(dto.getAddress());
         oldOrder.setOrderStatus(dto.getOrderStatus());
         oldOrder.setPrice(dto.getPrice());
-        oldOrder.
+        oldOrder.set();
 
         orderRepository.save(oldOrder);
          return mapperOrder.toDto(oldOrder);
