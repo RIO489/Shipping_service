@@ -1,9 +1,9 @@
 package shippingService.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,9 +19,11 @@ public class Holiday {
     private Long id;
 
     @Column(name = "time_open")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeOpen;
 
     @Column(name = "time_close")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeClose;
 
     @Column(name = "title")

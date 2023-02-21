@@ -11,6 +11,7 @@ import shippingService.mapper.MapperShop;
 import shippingService.repository.ShopRepository;
 import shippingService.service.ShopService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -38,6 +39,10 @@ public class ShopServiceImpl implements ShopService {
 //        Shop shop = shopRepository.findById(shopDTO.getId()).get();
         delete(shopDTO.getId());
         create(shopDTO);
+
+        shopRepository.save(MapperShop.ToEntity(shopDTO));
+        //save
+        //todo
         return findById(shopDTO.getId());
     }
 

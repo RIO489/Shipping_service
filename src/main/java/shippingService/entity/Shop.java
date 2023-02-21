@@ -1,9 +1,11 @@
 package shippingService.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -29,9 +31,14 @@ public class Shop {
     @OneToOne
     private User shopOwner;
 
+
+//    @DateTimeFormat(style = "hh:mm")
+//    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "time_open")
     private LocalDateTime timeOpen;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "time_close")
     private LocalDateTime timeClose;
 
