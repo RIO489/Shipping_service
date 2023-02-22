@@ -29,5 +29,5 @@ public class ShopDTO {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeClose;
     private List<Holiday> holidays;
-    private User shopOwner;
+    private UserDTO shopOwner;
 }
