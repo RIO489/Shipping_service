@@ -9,8 +9,8 @@ import java.util.List;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order,Long> {
-    @Query(value = "SELECT o FROM Order o WHERE o.courier_id= :courierId")
-    List<Order> findAllByCourierId(Long courierId);
+/*    @Query(value = "SELECT o FROM Order o WHERE o.courier_id= :courier_Id")
+    List<Order> findAllByCourierId(Long courier_Id);*/
 
     @Query(value = "SELECT o FROM Order o WHERE o.id= :id")
     Order findAllById(Long id);
@@ -31,18 +31,6 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
                 .filter(e -> e.getShopId().equals(shopId))
                 .findFirst()
                 .orElseThrow(() -> new ServiceException("No Account was found with this currency code:" + shopId));
-    }
-
-    public void update(final Long id, final OrderDTO dto) {
-        final Order update = findById(id);
-        update.setId(dto.getId());
-        update.setAddress(dto.getAddress());
-        update.setShopId(dto.getShopId());
-        update.setOrderStatus(dto.getOrderStatus());
-        update.setPrice(dto.getPrice());
-        update.setCourierId(dto.getCourierId());
-        update.setCustomerId(dto.getCustomerId());
-        ;
     }
 
     public void delete(final Long id) {

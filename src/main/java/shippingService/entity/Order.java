@@ -18,15 +18,15 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn("couier_id")
+    @JoinColumn(name = "courier_id")
     private User courier;
     @ManyToOne
-    @JoinColumn("customer_id")
+    @JoinColumn(name = "customer_id")
     private User customer;
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
     @OneToOne
-    @JoinColumn("shop_id")
+    @JoinColumn(name = "shop_id")
     private Shop shop;
     private String address;
     private BigDecimal price;

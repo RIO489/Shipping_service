@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shippingService.dto.OrderDTO;
+import shippingService.exception.ServiceImplException;
 import shippingService.service.OrderService;
 import shippingService.service.impl.OrderServiceImpl;
 
@@ -17,7 +18,7 @@ public class OrderResource {
     private OrderService orderService;
 
     @PostMapping
-    public OrderDTO create(final @RequestBody OrderDTO orderDTO) {
+    public OrderDTO create(final @RequestBody OrderDTO orderDTO) throws ServiceImplException {
         return orderService.create(orderDTO);
     }
 
