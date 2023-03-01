@@ -6,7 +6,7 @@ import shippingService.dto.OrderDTO;
 import shippingService.entity.Order;
 
 @Component
-public class MapperOrder {
+public class OrderMapper {
     @Autowired
     private MapperUser mapperUser;
     @Autowired
@@ -19,7 +19,7 @@ public class MapperOrder {
         dto.setCustomer(mapperUser.toDto(order.getCustomer()));
         dto.setOrderStatus(order.getOrderStatus());
         dto.setPrice(order.getPrice());
-        dto.setCourier(mapperUser.toDto(order.getCourier()));
+        dto.setCourierId(order.getCourier().getId());
         dto.setShop(mapperShop.ToDTO(order.getShop()));
         return dto;
     }

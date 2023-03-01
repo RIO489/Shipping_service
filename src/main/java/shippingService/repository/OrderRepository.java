@@ -9,36 +9,6 @@ import java.util.List;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order,Long> {
-/*    @Query(value = "SELECT o FROM Order o WHERE o.courier_id= :courier_Id")
-    List<Order> findAllByCourierId(Long courier_Id);*/
-
-    @Query(value = "SELECT o FROM Order o WHERE o.id= :id")
-    Order findAllById(Long id);
-
-//    @Query(value = "SELECT o FROM Order")
-//    List<Order> findAll();
-    /*public Order findByCustomerId(final Long customerId) {
-        return orders
-                .stream()
-                .filter(e -> e.getCustomerId().equals(customerId))
-                .findFirst()
-                .orElseThrow(() -> new ServiceException("No Account was found with this Client id:" + customerId));
-    }
-
-    public Order findByShopId(final String shopId) {
-        return orders
-                .stream()
-                .filter(e -> e.getShopId().equals(shopId))
-                .findFirst()
-                .orElseThrow(() -> new ServiceException("No Account was found with this currency code:" + shopId));
-    }
-
-    public void delete(final Long id) {
-        setOrders(orders.stream().filter(e -> !e.getId().equals(id)).collect(Collectors.toList()));
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-*/
+    @Query(value = "SELECT o FROM Order o WHERE o.courier.id= :courier_Id")
+    List<Order> findAllByCourierId(Long courier_Id);
 }

@@ -8,8 +8,8 @@ import shippingService.entity.Order;
 import shippingService.entity.Shop;
 import shippingService.entity.User;
 import shippingService.enums.OrderStatus;
-import shippingService.exception.ServiceImplException;
-import shippingService.mapper.MapperOrder;
+import shippingService.exception.ServiceException;
+import shippingService.mapper.OrderMapper;
 import shippingService.mapper.MapperUser;
 import shippingService.repository.OrderRepository;
 import shippingService.repository.ShopRepository;
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
-    private MapperOrder mapperOrder;
+    private OrderMapper orderMapper;
     @Autowired
     private MapperUser mapperUser;
     @Autowired
@@ -37,51 +37,54 @@ public class OrderServiceImpl implements OrderService {
     private ShopRepository shopRepository;
 
     @Override
-    public OrderDTO create(OrderDTO dto) throws ServiceImplException {
-        log.info("Order for create: {}",dto);//ORDER!!!!!
+    public OrderDTO create(OrderDTO dto) throws ServiceException {
+        log.info("Order for create: {}", dto);//ORDER!!!!!
         Order order = new Order();
         order.setOrderStatus(OrderStatus.PENDING);
 
-        User courier = userRepository.findById(dto.getCourier().getId()).orElseThrow(() -> new ServiceImplException("Can`t find User by this ID: " + dto.getCourier().getId()));
-        Shop shop = shopRepository.findById(dto.getShop().getId()).orElseThrow(()->new ServiceImplException("Can`t find Shop by this ID: "+dto.getShop().getId()));
+        User courier = userRepository.findById(dto.getCourierId()).orElseThrow(() -> new ServiceException("Can`t find User by this ID: " + dto.getCourierId()));
+        Shop shop = shopRepository.findById(dto.getShop().getId()).orElseThrow(() -> new ServiceException("Can`t find Shop by this ID: " + dto.getShop().getId()));
 
         order.setCourier(courier);
         order.setShop(shop);
-/*        courier.getDeliveredToUsers().add(order);
-        shop.getOrders().add(order);*/
 
         orderRepository.save(order);
         userRepository.save(courier);
         shopRepository.save(shop);
-        log.info("Order created: {}",order);//Order!!!
-        return mapperOrder.toDto(order);
+        log.info("Order created: {}", order);//Order!!!
+        return orderMapper.toDto(order);
     }
 
     @Override
     public OrderDTO findOneById(Long id) {
-        return mapperOrder.toDto(orderRepository.findById(id).stream().findFirst().orElseThrow());
+        return orderMapper.toDto(orderRepository.findById(id).orElseThrow());
     }
 
     @Override
-    public OrderDTO update(OrderDTO dto) {
-         Order oldOrder = orderRepository.findById(dto.getId()).stream().findFirst().orElseThrow();
+    public OrderDTO update(OrderDTO dto) throws ServiceException {
+        Order oldOrder = orderRepository.findById(dto.getId()).stream().findFirst().orElseThrow();
         oldOrder.setAddress(dto.getAddress());
-        oldOrder.setOrderStatus(dto.getOrderStatus());
+        if (!(oldOrder.getOrderStatus().name().equals("COMPLETED"))) {
+            oldOrder.setOrderStatus(dto.getOrderStatus());
+        }
         oldOrder.setPrice(dto.getPrice());
         oldOrder.setOrderStatus(dto.getOrderStatus());
-        oldOrder.setCourier(mapperUser.toEntity(dto.getCourier()));
+        User courier = userRepository.findById(dto.getCourierId()).orElseThrow(() -> new ServiceException("Can`t find User by this ID: " + dto.getCourierId()));
+        oldOrder.setCourier(courier);
 
         orderRepository.save(oldOrder);
-         return mapperOrder.toDto(oldOrder);
+        return orderMapper.toDto(oldOrder);
     }
 
     @Override
     public void delete(Long id) {
-         orderRepository.delete(orderRepository.findAllById(id));
+        if(orderRepository.findById(id).isPresent()) {
+            orderRepository.delete(orderRepository.findById(id).get());
+        }
     }
 
     @Override
     public List<OrderDTO> getAll() {
-        return orderRepository.findAll().stream().map(mapperOrder::toDto).collect(Collectors.toList());//List<Long> -> List<Order>
+        return orderRepository.findAll().stream().map(orderMapper::toDto).collect(Collectors.toList());//List<Long> -> List<Order>
     }
 }

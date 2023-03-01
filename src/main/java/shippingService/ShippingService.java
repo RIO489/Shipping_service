@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class Shipping_Service {
+public class ShippingService {
     public static void main(final String[] args) {
-        SpringApplication.run(Shipping_Service.class, args);
+        SpringApplication.run(ShippingService.class, args);
     }
 }

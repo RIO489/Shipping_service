@@ -19,7 +19,7 @@ import java.math.BigDecimal;
     public class OrderDTO {
         private Long id;
         @NotNull
-        private UserDTO courier;//ID
+        private Long courierId;
         @NotNull
         private UserDTO customer;
         @NotNull
