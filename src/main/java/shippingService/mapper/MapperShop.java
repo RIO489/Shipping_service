@@ -25,8 +25,9 @@ public class MapperShop {
 //
 //        return shopDTO;
 //    }
-
-    public static ShopDTO ToDTO(Shop shop){
+@Autowired
+private MapperUser mapperUser;
+    public  ShopDTO ToDTO(Shop shop){
         final ShopDTO shopDTO = new ShopDTO();
 
         shopDTO.setId(shop.getId());
@@ -40,7 +41,7 @@ public class MapperShop {
         return shopDTO;
     }
 
-    public static Shop ToEntity(ShopDTO shopDTO){
+    public  Shop ToEntity(ShopDTO shopDTO){
         final Shop shop = new Shop();
 
         shop.setId(shopDTO.getId());

@@ -20,11 +20,13 @@ import java.util.stream.Collectors;
 @Service
 public class ShopServiceImpl implements ShopService {
     @Autowired
+    private MapperShop mapperShop;
+    @Autowired
     private ShopRepository shopRepository;
 
     @Override
     public ShopDTO create(ShopDTO shopDTO) {
-        shopRepository.save(MapperShop.ToEntity(shopDTO));
+        shopRepository.save(mapperShop.ToEntity(shopDTO));
         return shopDTO;
     }
 
@@ -36,14 +38,14 @@ public class ShopServiceImpl implements ShopService {
     @Override
     @Transactional
     public ShopDTO update(ShopDTO shopDTO) {
-        shopRepository.save(MapperShop.ToEntity(shopDTO));
+        shopRepository.save(mapperShop.ToEntity(shopDTO));
         return findById(shopDTO.getId());
     }
 
     @Override
     public List<ShopDTO> getAll() {
         return shopRepository.findAll().stream()
-                .map(MapperShop::ToDTO)
+                .map(mapperShop::ToDTO)
                 .collect(Collectors.toList());
     }
 
@@ -54,7 +56,7 @@ public class ShopServiceImpl implements ShopService {
 //        }
 //        return shopRepository.findById(id).get();
         try {
-            return MapperShop.ToDTO(shopRepository.findById(id).get());
+            return mapperShop.ToDTO(shopRepository.findById(id).get());
         }catch (NoSuchElementException ex){
             return null;
         }
