@@ -1,16 +1,22 @@
 package shippingService.service;
 
+import shippingService.dto.ShopDTO;
 import shippingService.dto.StorageDTO;
 
 import java.math.BigInteger;
+import java.util.List;
 import java.util.UUID;
 
 public interface StorageService {
+    List<StorageDTO> getAll();
+
     StorageDTO create(StorageDTO dto);
 
-    StorageDTO read(BigInteger id);
+    StorageDTO read(Long id);
 
-    StorageDTO update(StorageDTO dto);
+    void update(StorageDTO dto);
 
-    StorageDTO delete(BigInteger id);
+    void delete(Long id);
+
+    void checkProduct(String shopName, String productName);
 }
