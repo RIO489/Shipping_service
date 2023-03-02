@@ -3,24 +3,20 @@ package shippingService.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import shippingService.entity.Shop;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import java.math.BigInteger;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "storage")
 public class StorageDTO {
 
     @NotNull
-    private Long storageID;
+    private Long storage_id;
     @NotNull
-    private BigInteger shopID;
+    private ShopDTO shop_id;
     @NotNull
-    private BigInteger productID;
+    private ProductDTO product_id;
     private Boolean available;
 }

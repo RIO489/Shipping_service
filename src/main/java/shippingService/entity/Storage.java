@@ -4,25 +4,30 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.math.BigInteger;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Storage {
+@Table(name = "storage")
+@Entity
+public class Storage implements Serializable {
+
+    // передивитись зв'язки + перед пушом поміняти пароль від бд
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long storageID;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger shopID;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger productID;
+    private Long storage_id;
+
+    @OneToOne
+    @JoinColumn(name = "shop_id")
+    private Shop shop_id;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product_id;
+
     @Column(name = "available")
     private Boolean available;
 }

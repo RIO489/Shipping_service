@@ -1,6 +1,5 @@
 package shippingService.service;
 
-import shippingService.dto.ShopDTO;
 import shippingService.dto.StorageDTO;
 
 import java.math.BigInteger;
