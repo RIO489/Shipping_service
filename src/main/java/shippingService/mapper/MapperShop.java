@@ -26,7 +26,7 @@ public class MapperShop {
 //        return shopDTO;
 //    }
 
-    public static ShopDTO ToDTO(Shop shop){
+    public ShopDTO toDTO(Shop shop){
         final ShopDTO shopDTO = new ShopDTO();
 
         shopDTO.setId(shop.getId());
@@ -40,7 +40,7 @@ public class MapperShop {
         return shopDTO;
     }
 
-    public static Shop ToEntity(ShopDTO shopDTO){
+    public Shop toEntity(ShopDTO shopDTO){
         final Shop shop = new Shop();
 
         shop.setId(shopDTO.getId());
