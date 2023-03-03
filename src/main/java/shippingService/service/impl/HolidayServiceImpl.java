@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shippingService.dto.HolidayDTO;
-import shippingService.mapper.MapperHoliday;
+import shippingService.mapper.HolidayMapper;
 import shippingService.repository.HolidayRepository;
 import shippingService.service.HolidayService;
 
@@ -16,11 +16,14 @@ import java.util.stream.Collectors;
 public class HolidayServiceImpl implements HolidayService {
 
     @Autowired
-    HolidayRepository holidayRepository;
+    private HolidayRepository holidayRepository;
+
+    @Autowired
+    private HolidayMapper holidayMapper;
 
     @Override
     public HolidayDTO create(HolidayDTO holidayDTO) {
-        holidayRepository.save(MapperHoliday.ToEntity(holidayDTO));
+        holidayRepository.save(holidayMapper.toEntity(holidayDTO));
         return holidayDTO;
     }
 
@@ -39,17 +42,13 @@ public class HolidayServiceImpl implements HolidayService {
 
     @Override
     public HolidayDTO findById(Long id) {
-        try{
-            return MapperHoliday.ToDTO(holidayRepository.findById(id).get());
-        }catch (NoSuchElementException ex){
-            return null;
-        }
+        return holidayMapper.toDTO(holidayRepository.findById(id).orElseThrow());
     }
 
     @Override
     public List<HolidayDTO> getAll() {
         return holidayRepository.findAll().stream()
-                .map(MapperHoliday::ToDTO)
+                .map(holidayMapper::toDTO)
                 .collect(Collectors.toList());
     }
 }

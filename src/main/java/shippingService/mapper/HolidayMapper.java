@@ -5,9 +5,8 @@ import shippingService.dto.HolidayDTO;
 import shippingService.entity.Holiday;
 
 @Component
-public class MapperHoliday {
-
-    public static HolidayDTO ToDTO(Holiday holiday){
+public class HolidayMapper {
+    public HolidayDTO toDTO(Holiday holiday){
         final HolidayDTO holidayDTO = new HolidayDTO();
 
         holidayDTO.setId(holiday.getId());
@@ -19,7 +18,7 @@ public class MapperHoliday {
         return holidayDTO;
     }
 
-    public static Holiday ToEntity(HolidayDTO holidayDTO){
+    public Holiday toEntity(HolidayDTO holidayDTO){
         final Holiday holiday = new Holiday();
 
         holiday.setId(holidayDTO.getId());

@@ -28,6 +28,6 @@ public class ShopDTO {
     private LocalDateTime timeOpen;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeClose;
-    private List<Holiday> holidays;
+    private List<HolidayDTO> holidays;
     private UserDTO shopOwner;
 }
