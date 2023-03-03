@@ -15,5 +15,6 @@ public interface UserService {
     void delete(Long id);
 
     List<UserDTO> getAll();
+    UserDTO registerShopOwner();
 
 }

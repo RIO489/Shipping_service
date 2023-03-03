@@ -54,4 +54,9 @@ public class UserServiceImpl implements UserService {
     public List<UserDTO> getAll() {
         return userRepository.findAll().stream().map(mapperUser::toDto).collect(Collectors.toList());
     }
+
+    @Override
+    public UserDTO registerShopOwner(){
+    return  null;
+    }
 }

@@ -47,5 +47,6 @@ public class UserResource {
         return userService.getAll();
     }
 
+
 }
 
