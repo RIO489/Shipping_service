@@ -47,6 +47,7 @@ public class HolidayServiceImpl implements HolidayService {
 
     @Override
     public List<HolidayDTO> getAll() {
+
         return holidayRepository.findAll().stream()
                 .map(holidayMapper::toDTO)
                 .collect(Collectors.toList());
