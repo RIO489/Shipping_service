@@ -29,8 +29,8 @@ public class Shop {
     @Column(name = "address")
     private String address;
 
-    @OneToOne
-    private User shopOwner;
+    @Column(name = "shop_owner_id")
+    private Long shopOwner;
 
 
 //    @DateTimeFormat(style = "hh:mm")

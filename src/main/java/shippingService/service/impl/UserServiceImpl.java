@@ -22,6 +22,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static shippingService.enums.UserRole.OWNER;
+
 
 @Service
 @Transactional
@@ -65,10 +67,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO registerShopOwner(ShopOwner shopOwner){
+        shopOwner.setUserRole(OWNER);
         UserDTO user = new UserDTO(shopOwner.getUserId(), shopOwner.getEmail(), shopOwner.getPassword(),
                 shopOwner.getFirstName(), shopOwner.getLastName(), shopOwner.getUserRole(), shopOwner.isUserStatus());
-        ShopDTO shop = new ShopDTO(shopOwner.getShopId(), shopOwner.getShopName(), shopOwner.getAddress(),
-                shopOwner.getTimeOpen(),shopOwner.getTimeClose(), shopOwner.getHolidays(), user);
+        ShopDTO shop = new ShopDTO(shopOwner.getShopId(), shopOwner.getShopName(), shopOwner.getAddress(),shopOwner.getShopOwner(),
+                shopOwner.getTimeOpen(), shopOwner.getTimeClose(), shopOwner.getHolidays());
 
         userRepository.save(mapperUser.toEntity(user));
         shopRepository.save(MapperShop.ToEntity(shop));
