@@ -34,8 +34,6 @@ public class ShopOwner {
     private Long shopId;
     private String shopName;
     private String address;
-    //    @DateTimeFormat(style = "hh:mm")
-    //    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeOpen;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
