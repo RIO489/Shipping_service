@@ -41,6 +41,6 @@ public class ShopOwner {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeClose;
     private List<Holiday> holidays;
-    private UserDTO shopOwner;
+    private Long shopOwner;
 
 }

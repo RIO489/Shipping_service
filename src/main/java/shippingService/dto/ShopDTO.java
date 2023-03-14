@@ -24,7 +24,7 @@ public class ShopDTO {
     private String address;
 //    @DateTimeFormat(style = "hh:mm")
 //    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm")
-    private Long shopOwner;
+    private Long shopOwnerId;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeOpen;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")

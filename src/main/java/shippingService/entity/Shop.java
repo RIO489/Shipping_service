@@ -30,11 +30,8 @@ public class Shop {
     private String address;
 
     @Column(name = "shop_owner_id")
-    private Long shopOwner;
+    private Long shopOwnerId;
 
-
-//    @DateTimeFormat(style = "hh:mm")
-//    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "time_open")
     private LocalDateTime timeOpen;
