@@ -38,6 +38,7 @@ public class MapperShop {
         shop.setTimeClose(shopDTO.getTimeClose());
         shop.setTimeOpen(shopDTO.getTimeOpen());
 
+
         return shop;
     }
 }
