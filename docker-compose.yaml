@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  shipping_service:
+    build:
+      context: .
+      args:
+        DATASOURCE_URL: ${DATASOURCE_URL}
+    image: shipping_service
+    ports:
+      - "8080:8080"
