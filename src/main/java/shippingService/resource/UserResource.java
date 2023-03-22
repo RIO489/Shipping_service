@@ -3,7 +3,7 @@ package shippingService.resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import shippingService.dto.ShopOwner;
+import shippingService.dto.ShopOwnerDTO;
 import shippingService.dto.UserDTO;
 import shippingService.repository.UserRepository;
 import shippingService.service.UserService;
@@ -49,7 +49,7 @@ public class UserResource {
     }
 
     @PostMapping("/regOwner")
-    public UserDTO registerOwner(@Valid @RequestBody ShopOwner shopOwner){
+    public UserDTO registerOwner(@Valid @RequestBody ShopOwnerDTO shopOwner){
         UserDTO user = new UserDTO(shopOwner.getUserId(), shopOwner.getEmail(), shopOwner.getPassword(),
                 shopOwner.getFirstName(), shopOwner.getLastName(), shopOwner.getUserRole(), shopOwner.isUserStatus());
         userService.registerShopOwner(shopOwner);

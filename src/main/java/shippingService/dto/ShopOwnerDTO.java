@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShopOwner {
+public class ShopOwnerDTO {
     //User
     private Long userId;
     @Email
@@ -39,6 +39,4 @@ public class ShopOwner {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeClose;
     private List<Holiday> holidays;
-    private Long shopOwner;
-
 }
