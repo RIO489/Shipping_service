@@ -1,6 +1,6 @@
 package shippingService.service;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import shippingService.dto.ShopOwnerDTO;
 import shippingService.dto.UserDTO;
 
 import java.util.List;
@@ -15,5 +15,6 @@ public interface UserService {
     void delete(Long id);
 
     List<UserDTO> getAll();
+    UserDTO registerShopOwner(ShopOwnerDTO shopOwner);
 
 }
