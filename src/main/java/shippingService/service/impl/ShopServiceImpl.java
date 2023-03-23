@@ -51,10 +51,6 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public ShopDTO findById(long id) {
-//        if(!shopRepository.findById(id).isPresent()){
-//            throw new IrregularData("Shop with Id "+id+" not found.");
-//        }
-//        return shopRepository.findById(id).get();
         try {
             return mapperShop.ToDTO(shopRepository.findById(id).get());
         }catch (NoSuchElementException ex){
