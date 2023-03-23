@@ -25,8 +25,6 @@ public class MapperShop {
 //
 //        return shopDTO;
 //    }
-@Autowired
-private MapperUser mapperUser;
     public  ShopDTO ToDTO(Shop shop){
         final ShopDTO shopDTO = new ShopDTO();
 
