@@ -9,13 +9,15 @@ import java.util.UUID;
 public interface StorageService {
     List<StorageDTO> getAll();
 
-    StorageDTO create(StorageDTO dto);
-
     StorageDTO read(Long id);
-
-    void update(StorageDTO dto);
 
     void delete(Long id);
 
-    void checkProduct(String shopName, String productName);
+    boolean  checkProduct(String shopName, String productName);
+
+    //boolean deactivate(Long storageId);
+    boolean activate(Long storageId);
+
+    //boolean deactivate(Long shopId, Long productId);
+    boolean activate(Long shopId, Long productId);
 }

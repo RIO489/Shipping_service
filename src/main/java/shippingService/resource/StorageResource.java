@@ -16,10 +16,10 @@ public class StorageResource {
     @Autowired
     private StorageService storageService;
 
-    @PostMapping("/create")
+    /*@PostMapping("/create")
     public StorageDTO create(final @Validated @RequestBody StorageDTO storageDTO) {
         return storageService.create(storageDTO);
-    }
+    }*/
 
     @GetMapping("/{id}")
     public StorageDTO read(final @PathVariable Long id) {
@@ -27,10 +27,8 @@ public class StorageResource {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(final @PathVariable("id") Long id) {
-        StorageDTO storageDTO = storageService.read(id);
+    public void delete(final @PathVariable("id") Long id) {
         storageService.delete(id);
-        return "Storage:" + storageDTO.toString();
     }
     @GetMapping(value = "/all")
     public List<StorageDTO> getAll() {

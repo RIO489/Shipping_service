@@ -14,19 +14,17 @@ import java.io.Serializable;
 @Entity
 public class Storage implements Serializable {
 
-    // передивитись зв'язки + перед пушом поміняти пароль від бд
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long storage_id;
+    private Long storageId;
 
     @OneToOne
     @JoinColumn(name = "shop_id")
-    private Shop shop_id;
+    private Shop shopId;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product product_id;
+    private Product productId;
 
     @Column(name = "available")
     private Boolean available;

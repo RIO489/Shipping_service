@@ -13,10 +13,10 @@ import javax.validation.constraints.NotNull;
 public class StorageDTO {
 
     @NotNull
-    private Long storage_id;
+    private Long storageId;
     @NotNull
-    private ShopDTO shop_id;
+    private ShopDTO shopId;
     @NotNull
-    private ProductDTO product_id;
+    private ProductDTO productId;
     private Boolean available;
 }
