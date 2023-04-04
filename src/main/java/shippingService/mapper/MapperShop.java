@@ -13,7 +13,7 @@ public class MapperShop {
     @Autowired
     private static MapperUser mapperUser;
 
-    public static ShopDTO ToDTO(Shop shop){
+    public ShopDTO ToDTO(Shop shop){
         final ShopDTO shopDTO = new ShopDTO();
 
         shopDTO.setId(shop.getId());
